@@ -10,3 +10,5 @@ Para que o código funcione é necessário ter o arquivo "cep_ordenado.dat" no m
 
 ### Ordenação por Intercalação:
 O código está presente na pasta "ordenaCepPorIntercalacao".
+
+Para que o código funcione é necessário ter o arquivo "cep.dat" no mesmo diretório onde está o executável.
