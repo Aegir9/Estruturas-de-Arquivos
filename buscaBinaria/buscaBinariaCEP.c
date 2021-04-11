@@ -44,14 +44,14 @@ int main(int argc, char **argv)
 	printf("Quantidade de Registro no Arquivo: %ld registros\n", tamanhoArquivo / sizeof(Endereco));
 	printf("==========================================================\n");
 
-	long primeiro = 0;									   // Posição do Primeiro registro do arquivo.
-	long ultimo = (tamanhoArquivo / sizeof(Endereco)) - 1; // Posição do Último registro do arquivo.
+	long inicio = 0;									   // Posição do Primeiro registro do arquivo.
+	long final = (tamanhoArquivo / sizeof(Endereco)) - 1; // Posição do Último registro do arquivo.
 	long meio;
 
-	while (primeiro <= ultimo)
+	while (inicio <= final)
 	{
 		++cont;
-		meio = (primeiro + ultimo) / 2;				 // Posição do Registro do meio.
+		meio = (inicio + final) / 2;				 // Posição do Registro do meio.
 		fseek(f, meio * sizeof(Endereco), SEEK_SET); // "Aponta" para o registro do meio.
 		fread(&e, sizeof(Endereco), 1, f);			 // Lê o registo que está apontado.
 
@@ -63,9 +63,9 @@ int main(int argc, char **argv)
 			return 0;
 		}
 		if (strncmp(argv[1], e.cep, 8) < 0)
-			ultimo = meio - 1;
+			final = meio - 1;
 		else
-			primeiro = meio + 1;
+			inicio = meio + 1;
 	}
 
 	fprintf(stderr, "CEP nao foi encontrado");
